@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+</head>
+<body>
+    <app-adminator-login></app-adminator-login>
+  <button class="insurancebtn" [routerLink] = "['/addnewinsurance1']">Add New Insurance</button>
+<table>
+  <tr>
+    <th>Insurance Type</th>
+    <th>Insurance Category</th>
+    <th>Insurance Id</th>
+    <th>Coverage Period</th>
+    <th>Amount</th>
+    <th>Edit/Delete</th>
+  </tr>
+  <tr *ngFor="let insurance of insuranceData">
+      <td>{{insurance.insuranceType}}</td>
+      <td>{{insurance.insuranceCategory}}</td>
+      <td>{{insurance.insuranceId}}</td>
+      <td>{{insurance.coveragePeriod}}</td>
+      <td>{{insurance.amount}}</td>
+      <td><a href="#Edit" style="color:blue">Edit</a> &nbsp;
+      <a href="Delete" style="color:blue">Delete</a>
+      </td>
+    </tr>
+</table>
+</body>
+</html>

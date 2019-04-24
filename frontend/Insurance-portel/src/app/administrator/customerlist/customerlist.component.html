@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+  <app-adminator-login></app-adminator-login>
+<table>
+  <tr>
+    <th>Customer Id</th>
+    <th>Customer Name</th>
+    <th>Phone No.</th>
+    <th>Status</th>
+    <th>Contact Details</th>
+    <th>Edit/Delete</th>
+  </tr>
+  <tr *ngFor="let customer of customerData">
+      <td>{{customer.CustomerId}}</td>
+      <td>{{customer.CustomerName}}</td>
+      <td>{{customer.PhoneNo}}</td>
+      <td>{{customer.Status}}</td>
+      <td><a href="#contact">Contact</a></td>
+      <td><a href="#Edit" style="color:blue">Edit</a> &nbsp;
+      <a href="Delete" style="color:blue">Delete</a>
+      </td>
+    </tr>
+</table>
+
+</body>
+</html>
