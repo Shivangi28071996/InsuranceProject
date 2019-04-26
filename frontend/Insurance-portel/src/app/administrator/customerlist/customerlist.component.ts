@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AdminatorLoginComponent} from '../adminator-login/adminator-login.component';
 import {AdministratorService} from '../administrator.service'
 import { CustomerDetails } from './customerList'
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-customerlist',
   templateUrl: './customerlist.component.html',
@@ -9,38 +10,14 @@ import { CustomerDetails } from './customerList'
   providers: [AdministratorService]
 })
 export class CustomerlistComponent implements OnInit {
-  customerData:CustomerDetails[];
+  customerData:{};
 
-  constructor() { }
+  constructor(private service:AdministratorService,private router:Router ) { }
 
   ngOnInit() {
-    this.sampleFunction();
+    this.service.getCustomerList().subscribe(data => this.customerData = data);
   }
-
-  sampleFunction() {
-    this.customerData =  [
-      {
-      "CustomerId": "1234",
-      "CustomerName": "Ram",
-      "PhoneNo": "9424058878",
-      "Status": "Active"
-      },
-      {
-        "CustomerId": "12345",
-        "CustomerName": "Ram",
-        "PhoneNo": "9424058878",
-        "Status": "Active"
-        },
-        {
-          "CustomerId": "12345",
-          "CustomerName": "Ram",
-          "PhoneNo": "9424058878",
-          "Status": "Active"
-          },
-      
-      ];
-   
-   
+  goToCustomerDetails(customerDetail:CustomerDetails){
+    this.router.navigate(['editcustomer', customerDetail.customerId])
   }
-
 }

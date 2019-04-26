@@ -11,7 +11,13 @@ import { AdministratorService } from './administrator/administrator.service';
 import { HomepageComponent } from './HomePage/homepage/homepage.component';
 import { AddnewinsuranceComponent } from './administrator/addnewinsurance/addnewinsurance.component';
 import {DataserviceService} from './administrator/addnewinsurance/dataservice.service';
-import { CustomerdetailsComponent } from './Customer/customerdetails/customerdetails.component'
+import { CustomerdetailsComponent } from './Customer/customerdetails/customerdetails.component';
+import { UpdatecustomerdetailsComponent } from './Customer/updatecustomerdetails/updatecustomerdetails.component';
+import { InsuranceofferComponent } from './Customer/insuranceoffer/insuranceoffer.component';
+import { EditcustomerComponent } from './administrator/editcustomer/editcustomer.component';
+import { VehicleinsurancelistComponent } from './Customer/insuranceoffer/vehicleinsurancelist/vehicleinsurancelist.component';
+import { HomeinsurancelistComponent } from './Customer/insuranceoffer/homeinsurancelist/homeinsurancelist.component';
+import { LifeinsurancelistComponent } from './Customer/insuranceoffer/lifeinsurancelist/lifeinsurancelist.component'
 
 @NgModule({
   declarations: [
@@ -23,6 +29,12 @@ import { CustomerdetailsComponent } from './Customer/customerdetails/customerdet
     HomepageComponent,
     AddnewinsuranceComponent,
     CustomerdetailsComponent,
+    UpdatecustomerdetailsComponent,
+    InsuranceofferComponent,
+    EditcustomerComponent,
+    VehicleinsurancelistComponent,
+    HomeinsurancelistComponent,
+    LifeinsurancelistComponent,
     
   ],
   imports: [

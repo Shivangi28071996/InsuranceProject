@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div class = 'formsize'>
+<form #updateform="ngForm" (ngSubmit)="onSubmit(updateform)" >
+  <div class="container">
+    <h1>Update Details</h1>
+    <hr>
+    <label for="Customer Id"><b>Customer Id</b></label>
+    <input type="text" placeholder="Customer Id" name="customerId" value={{this.customerData?.customerId}} required ngModel #customerId="ngModel">
+
+    <label for="Customer Name"><b>Customer Name</b></label>
+    <input type="text" placeholder="Customer Name" name="customerName" value={{this.customerData?.customerName}} required ngModel>
+
+    <label for="Occupation"><b>Occupation</b></label>
+    <input type="text" placeholder="Occupation" name="occupation" value={{this.customerData?.occupation}} required ngModel >
+
+    <label for="Gender"><b>Gender</b></label>
+    <input type="text" placeholder="Gender" name="gender" value={{this.customerData?.gender}} required ngModel>
+
+    <label for="PAN"><b>PAN</b></label>
+    <input type="text" placeholder="PAN" name="pan" value={{this.customerData?.pan}} required ngModel>
+
+    <label for="Nationality"><b>Nationality</b></label>
+    <input type="text" placeholder="Nationality" name="nationality" value={{this.customerData?.nationality}} required ngModel>
+
+    <label for="annualincome"><b>Annual Income</b></label>
+    <input type="text" placeholder="Annual Income" name="annualIncome" value={{this.customerData?.annualIncome}} required ngModel>
+
+    <label for="maritalstatus"><b>Marital Status</b></label>
+    <input type="text" placeholder="Marital Status" name="maritalStatus" value={{this.customerData?.maritalStatus}} required ngModel>
+
+    <label for="dateofbirth"><b>Date Of Birth</b></label>
+    <input type="text" placeholder="Date Of Birth" name="dob" value={{this.customerData?.dob}} required ngModel>
+
+    <label for="Address"><b>Address</b></label>
+    <input type="text" placeholder="Address" name="customerAddress" value={{this.customerAddress}} required ngModel>
+
+    <label for="phonenumber"><b>Phone Number </b></label>
+    <input type="text" placeholder="Phone Number " name="phone" value={{this.customerData?.phone}} required ngModel>
+
+    <label for="mobilenumber"><b>Mobile Number</b></label>
+    <input type="text" placeholder="Mobile Number" name="mobileNo" value={{this.customerData?.mobileNo}} required ngModel>
+
+    <label for="emailid"><b>Email Id</b></label>
+    <input type="text" placeholder="Email Id" name="emailId" value={{this.customerData?.emailId}} required ngModel>
+    
+    <hr>
+    <div class="btndiv">
+    <button type="submit" class="registerbtn" >Update</button>
+    <button onclick="confirm('Are you sure you want to delete this account')" class="registerbtn1" >Cancel</button>
+  </div>
+</div>
+</form>
+</div>
+</body>
+</html>

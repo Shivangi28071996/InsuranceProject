@@ -40,19 +40,19 @@ body {
     background-color: #4CAF50;
     color: white;
     padding: 16px 20px;
-    border: none;
-    margin-left: 10px;
-    cursor: pointer;
+    margin-left: 10;
     flex: 1;
+    border: none;
+    cursor: pointer;
     width: 50%;
     opacity: 0.9;
   }
   .registerbtn1 {
     background-color: red;
     color: white;
-    margin-left: 10px;
     padding: 16px 20px;
     flex: 1;
+    margin-left: 10px;
     border: none;
     cursor: pointer;
     width: 50%;
@@ -78,6 +78,7 @@ body {
       margin: auto;
       
   }
+
   .btndiv{
     display: flex;
   }

@@ -1,43 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import {AdministratorService} from '../administrator.service'
 
 @Component({
   selector: 'app-insurancelist',
   templateUrl: './insurancelist.component.html',
-  styleUrls: ['./insurancelist.component.css']
+  styleUrls: ['./insurancelist.component.css'],
+  providers: [AdministratorService]
 })
 export class InsurancelistComponent implements OnInit {
-  insuranceData:any;
-  constructor() { }
+  insuranceData:{};
+  constructor(private service:AdministratorService ) { }
 
   ngOnInit() {
-    this.insuranceList();
+    this.service.getInsuranceList().subscribe(data => this.insuranceData = data);
   }
-  insuranceList(){
-    this.insuranceData =  [
-      {
-      "insuranceType": "Vehicle",
-      "insuranceCategory": "Car",
-      "insuranceId": "df454gfg",
-      "coveragePeriod": "1",
-      "amount": "15000"
-      },
-      {
-        "insuranceType": "Life",
-        "insuranceCategory": "Bike",
-        "insuranceId": "fgf4545",
-        "coveragePeriod": "1",
-        "amount": "15000"
-        },
-        {
-          "insuranceType": "Vehicle",
-          "insuranceCategory": "Car",
-          "insuranceId": "fdgf4545",
-          "coveragePeriod": "1",
-          "amount": "15000"
-          },
-      
-      
-      ];
-  }
-
+  
 }
