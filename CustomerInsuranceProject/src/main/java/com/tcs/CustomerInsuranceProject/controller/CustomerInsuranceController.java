@@ -23,7 +23,7 @@ public class CustomerInsuranceController {
 	@PostMapping("/createCustomer")
 	public String addCustomerInfo() {
 		CustomerAddress address= new CustomerAddress("New Delhi","Delhi",110035);
-		CustomerInfo customerInfo=new CustomerInfo("cust143", "Shivangi" , "female", 222222222, 222222222, "31-08-92",
+		CustomerInfo customerInfo=new CustomerInfo("cust163", "Shivangi" , "female", 222222222, 222222222, "31-08-92",
 				"Professor", 400000, "ANSJ123", "Indian", "anuj@gmail.com", "abc123","Unmarried", "Active",address);
 		service.addCustomerInfo(customerInfo);
 		return "Customer added successfully";

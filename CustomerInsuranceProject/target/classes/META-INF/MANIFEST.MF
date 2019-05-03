@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
+Built-By: tcs
+Build-Jdk: 12.0.1
 Implementation-Title: CustomerInsuranceProject
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: tcs
 Implementation-Vendor-Id: com.tcs
-Build-Jdk: 1.8.0_211
-Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
- ot-starter-parent/CustomerInsuranceProject
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-boot
+ -starter-parent/CustomerInsuranceProject
 Created-By: Maven Integration for Eclipse
 

@@ -38,9 +38,9 @@ public class InsuranceDetailController {
 	@CrossOrigin(allowedHeaders= "*",allowCredentials="true")
 	@PutMapping("/updateCustomerDetailByAdministrator/{customerId}")
 	public String updateCustomerDetailByCustomer(@PathVariable("customerId") String customerId ) {
-		CustomerAddress address= new CustomerAddress("New Delhi","Delhi",110035);
+		CustomerAddress address= new CustomerAddress("New Delhi","Madhya Pardesh",110035);
 		CustomerInfo customerInfo=new CustomerInfo("Shailendra" , 222222222, 222222222,
-				"Developer", 500000, "shailendra@gmail.com", "abc123","Married",address);
+				"Developer", 500000, "shailendra@gmail.com", "abc123343","Married",address);
 		service.updateCustomerDetailByCustomer(customerId,customerInfo);
 		return "Details updated succesfully";
 	}
@@ -69,8 +69,8 @@ public class InsuranceDetailController {
 	@CrossOrigin(allowedHeaders= "*",allowCredentials="true")	
 	@PostMapping("/createNewInsurance")
 	public String createNewInsurance() {
-		InsuranceDetail insuranceDetail=new InsuranceDetail("insurance002", "Vehicle Insurance" , 
-										"Two Wheeler", 1,15044);
+		InsuranceDetail insuranceDetail=new InsuranceDetail("insurance003", "Home Insurance" , 
+										"Owner Property", 1,15044);
 		service.createNewInsurance(insuranceDetail);
 		return "Insurance Added to the list";
 	}
