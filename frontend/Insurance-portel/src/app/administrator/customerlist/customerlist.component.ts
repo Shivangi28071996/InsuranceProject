@@ -15,9 +15,17 @@ export class CustomerlistComponent implements OnInit {
   constructor(private service:AdministratorService,private router:Router ) { }
 
   ngOnInit() {
+    this.getCustomerList()
+  }
+  getCustomerList(){
     this.service.getCustomerList().subscribe(data => this.customerData = data);
   }
   goToCustomerDetails(customerDetail:CustomerDetails){
     this.router.navigate(['editcustomer', customerDetail.customerId])
+  }
+  deleteCustomer(customerDetail:CustomerDetails){
+       console.log(customerDetail.customerId)
+       this.service.deleteCustomer(customerDetail.customerId).subscribe(t => {this.getCustomerList();});
+
   }
 }

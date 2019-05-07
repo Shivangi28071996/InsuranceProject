@@ -18,7 +18,8 @@ import { EditcustomerComponent } from './administrator/editcustomer/editcustomer
 import { VehicleinsurancelistComponent } from './Customer/insuranceoffer/vehicleinsurancelist/vehicleinsurancelist.component';
 import { HomeinsurancelistComponent } from './Customer/insuranceoffer/homeinsurancelist/homeinsurancelist.component';
 import { LifeinsurancelistComponent } from './Customer/insuranceoffer/lifeinsurancelist/lifeinsurancelist.component'
-
+import{HttpModule} from '@angular/http';
+import { HttpClientModule } from '@angular/common/http'
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,13 +35,13 @@ import { LifeinsurancelistComponent } from './Customer/insuranceoffer/lifeinsura
     EditcustomerComponent,
     VehicleinsurancelistComponent,
     HomeinsurancelistComponent,
-    LifeinsurancelistComponent,
+    LifeinsurancelistComponent
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,HttpModule,HttpClientModule
   ],
   providers: [AdministratorService,DataserviceService],
   bootstrap: [AppComponent]
