@@ -1,5 +1,5 @@
 body {font-family: Arial, Helvetica, sans-serif;}
-.navbar {
+/* .navbar {
     overflow: hidden;
     background-color: #333;
   }
@@ -13,7 +13,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   }
   .navbar a:hover {
     background-color: red;
-  }
+  } */
   .shift{
     
     float: left;

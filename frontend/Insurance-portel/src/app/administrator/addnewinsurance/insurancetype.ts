@@ -1,10 +1,7 @@
 export class InsuranceType{
-    Vehicle:string;
-    Home:string;
-    Life:string
-    constructor(Vehicle:string,Home:string,Life:string){
-          this.Vehicle=Vehicle;
-          this.Home= Home;
-          this.Life=Life;
-    }
+    constructor(public type:String){}
 }
+export class InsuranceCategory{
+    constructor( public insuranceID:String, public name:String){}
+}
+

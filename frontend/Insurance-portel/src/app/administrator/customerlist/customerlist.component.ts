@@ -1,31 +1,87 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import {AdminatorLoginComponent} from '../adminator-login/adminator-login.component';
 import {AdministratorService} from '../administrator.service'
 import { CustomerDetails } from './customerList'
 import { Router } from '@angular/router';
+import { EditcustomerComponent } from '../editcustomer/editcustomer.component';
+import * as $ from 'jquery';
+
+
 @Component({
   selector: 'app-customerlist',
   templateUrl: './customerlist.component.html',
   styleUrls: ['./customerlist.component.css'],
   providers: [AdministratorService]
 })
-export class CustomerlistComponent implements OnInit {
-  customerData:{};
 
-  constructor(private service:AdministratorService,private router:Router ) { }
+
+export class CustomerlistComponent implements OnInit {
+  customerData:CustomerDetails;
+  active:boolean=false;
+  deactive:boolean=false;
+  contactDetails:CustomerDetails;
+  message:String = null;
+  userName:String;
+  constructor(private service:AdministratorService,private router:Router) { 
+     
+  }
 
   ngOnInit() {
-    this.getCustomerList()
+    // this.userName = localStorage.getItem('currentUser');
+    // console.log(this.userName)
+    // if(this.userName=="admin001"){
+    //   this.getCustomerList();
+    // }else{
+    //   this.router.navigate(['Login'])
+    // }
+
+     this.getCustomerList();
+    // this. printdet();
   }
   getCustomerList(){
-    this.service.getCustomerList().subscribe(data => this.customerData = data);
+    this.service.getCustomerList().subscribe((data:any) =>{ this.customerData = data;
+      
+    });
   }
-  goToCustomerDetails(customerDetail:CustomerDetails){
-    this.router.navigate(['editcustomer', customerDetail.customerId])
+  goToCustomerDetails(customerToken:String){
+    sessionStorage.setItem("customerToken",String(customerToken));
+    this.router.navigate(['/adminview/editcustomer'])
   }
   deleteCustomer(customerDetail:CustomerDetails){
-       console.log(customerDetail.customerId)
-       this.service.deleteCustomer(customerDetail.customerId).subscribe(t => {this.getCustomerList();});
+      
+       if(confirm("Are you sure to delete !")) {
+          this.service.deleteCustomer(customerDetail.customerId).subscribe(
+            data => console.log('success', data),
+            error => {
+              $(window.location.reload()); 
+              this.message= error.error.text; 
+               });
+      }
+     
+  }
+
+  displayContactInfo(customerId:String){
+         
+        this.service.getCutomerDetailById(customerId).subscribe((contactDetails:any)=>{
+          this.contactDetails = contactDetails;
+        
+
+        })
+  }
+  
+
+  activateCustomerAccount(customerId:String){
+    if(confirm("Are you sure !")) {
+      this.service.activateCustomerAccount(customerId).subscribe(
+        data => console.log('success', data),
+        error => {
+          $(window.location.reload()); 
+          this.message= error.error.text; 
+           });
+    
+    }
+        
 
   }
+
 }

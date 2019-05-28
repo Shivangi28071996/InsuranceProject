@@ -12,11 +12,12 @@ export class CustomerDetails{
     dob:String;
     mobileNo:any;
     emailId:String;
+    password:String;
     customerAddress:CustomerAddress
-    insurance:CustomerInsurance[]
+    customerInsurance:CustomerInsurance[]
 
 constructor(customerId:String,customerName:String,phone:any,status:String, occupation:String,gender:String,pan:String,
-    nationality:String, annualIncome:String,maritalStatus:String,dob:String,mobileNo:any,emailId:String,customerAddress:CustomerAddress, insurance:CustomerInsurance[]){
+    nationality:String, annualIncome:String,maritalStatus:String,dob:String,mobileNo:any,emailId:String,password:String,customerAddress:CustomerAddress){
     this.customerId=customerId;
     this.customerName=customerName;
     this.phone=phone;
@@ -30,8 +31,8 @@ constructor(customerId:String,customerName:String,phone:any,status:String, occup
     this.dob=dob;
     this.mobileNo=mobileNo;
     this.emailId=emailId;
+    this.password=password;
     this.customerAddress=customerAddress
-    this. insurance=insurance
 }
 }
 
@@ -55,11 +56,15 @@ export class CustomerInsurance{
     insuranceCategory:String
     coveragePeriod:String
     amount:String
-    constructor(insuranceId:String,insuranceType:String,insuranceCategory:String,coveragePeriod:String,     amount:String){
+    nominee:String
+    nomineeRelation:String
+    constructor(insuranceId:String,insuranceType:String,insuranceCategory:String,coveragePeriod:String, amount:String,nominee:String,nomineeRelation:String){
         this.insuranceId=insuranceId
         this.insuranceType=insuranceType
         this.insuranceCategory=insuranceCategory
         this.coveragePeriod=coveragePeriod
         this.amount=amount
+        this.nominee=nominee
+        this.nomineeRelation=nomineeRelation
     }
 }

@@ -1,32 +1,48 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-<div class="size">
-<form #form="ngForm" (ngSubmit)= "formSubmit(form)">
-  <div class="imgcontainer">
-    <img src="./assets/images/login.jpg" alt="Avatar" class="avatar">
-  </div>
-  <div class="container">
-    <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="username" required ngModel >
+<app-header></app-header>
+<div class="container register">
+        <div class="row">
+            <div class="col-md-3 register-left">
+                <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+                <h3>Welcome</h3>
+                <p>Welcome to Insurance Login  portal!</p>
+                <input  [routerLink] = "['/register']" type="submit" name="" value="Register"/><br/>
+            </div>
+           
+            <div class="col-md-9 register-right">
+                <div class="tab-content" id="myTabContent">
+                    <div  id="home" role="tabpanel">
+                        <h3 class="register-heading">Customer Login</h3>
+                        <div class="row register-form">
+                                <label style="color:red"> {{message}}</label>
+                            <div class="col-md-6">
+                             <form #frm="ngForm" (ngSubmit)= "formSubmit(frm)" novalidate>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" name="username" placeholder="Email Id *"  ngModel />
+                                        
+                                </div>
+                               
+<!--                                 
+                             <div class="form-group">
+                                    <input type="email" class="form-control" name="username" placeholder="Email Id *" required  ngModel #username="ngModel"/>
+                                    <span class="help-bpx" *ngIf="username.touched && !username.valid ">Please enter the Email Value</span> 
+                                    <div *ngIf="frm.submitted && username.touched &&  username.invalid" class="invalid-feedback">
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password" required ngModel>
-          
-    <button type="submit">Login</button>
-    <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-    </label>
-  </div>
-
-  <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn" [routerLink] ="['/homePage']" >Cancel</button>
-    <span class="psw">Forgot <a href="">password?</a></span>
-  </div>
-</form>
-</div>
-</body>
-</html>
+                                            <div *ngIf="username.errors.required">Last Name is required</div>
+                                    </div> -->
+                              
+                                <div class="form-group">
+                                    <input type="password"  name="password" class="form-control" placeholder="Password *" ngModel />
+                                </div>
+                                <input type="submit" class="btnRegister"  value="Login"/>
+                            </form>
+                              </div>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+         
+        </div>
+    
+    </div>
+    <app-footer></app-footer>   

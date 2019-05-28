@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router , ActivatedRoute, Params} from '@angular/router';
 import {AdministratorService} from '../../administrator/administrator.service';
 import { NgForm } from '@angular/forms';
+import{CustomerDetails} from '../../administrator/customerlist/customerList';
+import{CustomerService} from '../customer.service';
+import * as $ from 'jquery';
+
+declare var $: any;
 
 @Component({
   selector: 'app-updatecustomerdetails',
@@ -10,22 +15,44 @@ import { NgForm } from '@angular/forms';
   providers: [AdministratorService]
 })
 export class UpdatecustomerdetailsComponent implements OnInit {
-  customerData:any
+  customerData:CustomerDetails;
   customerAddress:String
   updateFormValue:any
-  constructor(private router:Router,private route:ActivatedRoute,private service :AdministratorService) { }
+  personalDetails:boolean=false;
+  tokenId:String;
+  constructor(private router:Router,private route:ActivatedRoute,private service :AdministratorService,private custService:CustomerService) { }
 
   ngOnInit() {
-    this.route.params.subscribe(params=> {
-      this.service.getCutomerDetailById(params['customerId']).subscribe(customerData => {this.customerData = customerData;
-                                            this.customerAddress=this.customerData.customerAddress.city+", "+this.customerData.customerAddress.state+", "+this.customerData.customerAddress.pinCode
-      
+     
+     this.tokenId = localStorage.getItem('currentUser');
+      this.service.getCutomerDetailById(this.tokenId).subscribe((customerDetails:any)=>{ this.customerData = customerDetails;
+                                                                                                  
+                                                                                                        this.personalDetails=true;
+});
+ 
+
+  }
+  ngAfterViewChecked() {
+    $('.alpha_bet').keypress(function(key) {
+      if((key.charCode < 97 || key.charCode > 122) && (key.charCode < 65 || key.charCode > 90) && (key.charCode!=32) && (key.charCode!=45) ) return false;
   });
-  })
+  
+  $('.mobileNo').keypress(function(key) {
+      if(key.charCode < 48 || key.charCode > 57) return false;
+  });
+   
+
   }
 
   onSubmit(updateform:NgForm){
-    this.updateFormValue=updateform.value;
-    console.log(this.updateFormValue.customerId);
+    this.customerData=updateform.value;
+  // console.log("sdfdfdfdsf",this.customerData);
+
+   this.custService.updateCustomerDetails(this.customerData).subscribe(
+    data => console.log("Success" ,data),
+    error =>{error.error.text;
+      this.router.navigate(['/customerDashboard/customerdetails']);
+    }
+   );
   }
 }

@@ -1,0 +1,34 @@
+<html>
+<body>
+<form #editForm="ngForm" (ngSubmit)= "editIsuranceDetails(editForm.value)">
+    <div class="persondetails" *ngIf="insuranceDetails">
+<h3>Insurance Details</h3>
+<hr>
+<div class="form-group">
+<label>Insurance Type : </label>
+    <input type="text" class="form-control" name="insuranceType" [(ngModel)]="insuranceDetails.insuranceType" #insuranceType="ngModel" readonly> 
+</div>
+<div class="form-group">
+        <label>Insurance Category	 :</label>	
+         <input type="text" class="form-control" name="insuranceCategory" [(ngModel)]="insuranceDetails.insuranceCategory" #insuranceCategory="ngModel" readonly> 
+</div>
+<div class="form-group">
+<!-- <label>Insurance Id	 :</label> -->
+     <input type="hidden" class="form-control" name="insuranceId" [(ngModel)]="insuranceDetails.insuranceId" #insuranceId="ngModel">
+</div>
+<div class="form-group">
+<label>Coverage Period in month	 :  </label>
+     <input type="number" class="form-control" name="coveragePeriod" [(ngModel)]="insuranceDetails.coveragePeriod" #coveragePeriod="ngModel">
+</div>
+<div class="form-group">		
+<label>Amount :</label>
+     <input type="number" class="form-control" name="amount" [(ngModel)]="insuranceDetails.amount" #amount="ngModel">
+</div>
+
+<div>
+<button class='btn' type="submit">Update Details</button>
+</div>
+</div>
+</form>
+</body>
+</html>

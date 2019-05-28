@@ -1,37 +1,40 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
 <div class = 'formsize'>
-<form action="/action_page.php">
-  <div class="container">
+<form #editForm="ngForm" (ngSubmit)= "addNewIsurance(editForm.value)">
+  <div class="container1">
     <h1>Add New Insurance</h1>
     <p>Please fill in this form to add an new insurance.</p>
-    <hr>
+    <hr>  
+    
+    <label><b>Insurance Type</b></label>
+<select  
+      (change)="onSelect($event.target.value)" [(ngModel)]="insuranceType.type" name="insuranceType" >
+        <option value="0" selected>--Select--</option>
+        <option *ngFor="let insurance of insuranceType"
+        value= {{insurance.type}}>
+        {{insurance.type}}
+        </option>
+</select>
 
-    <label for="Insirancetype"><b>Insurance Type</b></label>
-    <input type="text" placeholder="Insurance Type" name="insurancetype" required>
-
-    <label for="category"><b>Insurance Category</b></label>
-    <input type="text" placeholder="Insurance Category" name="insurancecategory" required>
-
-    <label for="Insuranceid"><b>Insurance Id</b></label>
-    <input type="text" placeholder="Insurance Id" name="insuranceid" required>
+    <label ><b>Insurance Category</b></label>
+    <select [(ngModel)]="selectInsuranceCategory" name="insuranceCategory">
+        <option value="0">--Select--</option>
+        <option *ngFor="let category of insuranceCategory "
+              value= {{category.name}}>
+              {{category.name}}
+        </option>
+        </select>
 
     <label for="coverageperiod"><b>Coverage Period (In Month)</b></label>
-    <input type="text" placeholder="Coverage Period" name="coverageperiod" required>
+    <input type="number" placeholder="Coverage Period" name="coveragePeriod"  [(ngModel)]="coveragePeriod">
 
     <label for="amount"><b>Amount</b></label>
-    <input type="number" placeholder="Amount" name="amount" required>
+    <input type="number" placeholder="Amount" name="amount"  [(ngModel)]="amount">
     <hr>
     <div class="btndiv">
-    <button type="submit" class="registerbtn" [routerLink] = "['/insuranceList']">Add Inusrance</button>
+    <button type="submit" class="registerbtn">Add Inusrance</button>
     <button type="submit" class="registerbtn1" [routerLink] = "['/insuranceList']">Cancel</button>
   </div>
   </div>
 </form>
 </div>
-</body>
-</html>
+

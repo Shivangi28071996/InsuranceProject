@@ -1,7 +1,15 @@
-<form action="/action_page.php">
-  <div class="navbar">
-      <a href="#home" class="shift1" [routerLink] = "['/customerList']" >CustomerList</a>
-      <a href="#Insurance" class="shift" [routerLink] = "['/insuranceList']">InsuranceList</a>
-   </div> 
-   <router-outlet></router-outlet>
-</form>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li> <a href="#home" class="shift1" [routerLink] = "['/adminview/customerList']" >CustomerList</a></li>
+        <li>   <a href="#Insurance" class="shift" [routerLink] = "['/adminview/insuranceList']">InsuranceList</a></li>
+        <li><button (click)="logout()" >Logout</button></li>
+    
+      </ul>
+    </div>
+  </nav>
+  <br>
+
+
+

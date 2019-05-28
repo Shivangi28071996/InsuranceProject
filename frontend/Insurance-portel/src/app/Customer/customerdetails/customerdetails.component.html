@@ -1,50 +1,60 @@
-<html>
-<body>
+<app-dashboard></app-dashboard>
+<div id="dashboard">
+  <div class="main-content">
+    <div class="jumbotron text-center">
+        <div class="span2" >
+            <img src="/assets/images/avatar.jpg" class="img-circle">
+            </div>
+           
+            <div class="span8">
+                <div *ngIf="personalDetails">
+                <h3>{{customerDetail.customerName}}</h3>
+                <h6>Email: {{customerDetail.emailId}}</h6>
+                <h6>Occupation : {{customerDetail.occupation}}</h6>
+                
+            </div>
+          </div>
+      </div>
+      <div class="jumbotron text-center" style="background:transparent !important">
+      <div class="container"  *ngIf="personalDetails">
+          <h3  class="textaline">Personal Details</h3>
+                <hr>
+          <div class="row">
+            <div class="col-sm-6" >
+                
+                <h5 class="textaline">Gender : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{customerDetail.gender}}</h5>
+                <h5 class="textaline">PAN : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; {{customerDetail.pan}}</h5>
+                <h5 class="textaline">Nationality : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {{customerDetail.nationality}}</h5>
+               
+            </div>
+            <div class="col-sm-6">
+                <h5 class="textaline">Annual Income :&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {{customerDetail.annualIncome}}</h5>	
+                <h5 class="textaline">Marital Status :&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; {{customerDetail.maritalStatus}}</h5>	
+                <h5 class="textaline">Date Of Birth : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;{{customerDetail.dob}}</h5>
+            </div>
+           
+          </div>
+          <h3 class="textaline">Contact Details</h3>
+          <hr>
+    <div class="row">
+      <div class="col-sm-6" >
+          
+          <h5 class="textaline">Address : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{customerDetail.customerAddress.address}}</h5>
+          <h5 class="textaline">City : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; {{customerDetail.customerAddress.city}}</h5>
+          <h5 class="textaline">Mobile Number : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  {{customerDetail.mobileNo}}</h5>
+         
+      </div>
+      <div class="col-sm-6">
+          <h5 class="textaline">State :&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{customerDetail.customerAddress.state}}</h5>	
+          <h5 class="textaline">Pin Code :&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{customerDetail.customerAddress.pinCode}}</h5>	
+          <h5 class="textaline">Phone Number : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{customerDetail.phone}}</h5>
+      </div>
+     
+    </div>
 
-<div class="persondetails">
-<h3>Personal Details</h3>
-<hr>
-<h5>Customer Id : </h5>
-<h5>Customer Name : </h5>	
-<h5>Occupation : </h5>
-<h5>Gender : </h5>		
-<h5>PAN : </h5>
-<h5>Nationality : </h5>
-<h5>Annual Income : </h5>	
-<h5>Marital Status : </h5>	
-<h5>Date Of Birth : </h5>
+        </div>
+       
+    
 </div>
-<br>
-<div class="Insurancedetails">
-<h3>Insurance Details</h3>
-<hr>
-<h5>Insurance Id : </h5>
-<h5>Insurance Type : </h5>	
-<h5>Insurance Category : </h5>
-<h5>Coverage Period : </h5>		
-<h5>Amount : </h5>
-<h5>Stating From : </h5>
-<h5>Valid Upto : </h5>	
-<h5>Nominee : </h5>	
-<h5>Nominee Relation : </h5>
 </div>
-<br>
-<div class ="contactdetails">
-<h3>Contact Details</h3>
-<hr>
-<h5>Address : </h5>
-<h5>Phone Number : </h5>	
-<h5>Mobile Number : </h5>
-<h5>Email Id :</h5>	
 </div>
-
-
-
-<br>
-<div class="btnmain">
-<button class='btn' [routerLink] = "['/updatecustomerdetails']">Update Details</button>
-<button class="btn"  onclick="confirm('Are you sure you want to Deactivate this account')"> Deactivate Account</button>
-<button class="btn" (click)="addNewInsurance()">Add New Insurance</button>
-</div>
-</body>
-</html>

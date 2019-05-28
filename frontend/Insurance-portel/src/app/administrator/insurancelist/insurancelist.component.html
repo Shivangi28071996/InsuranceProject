@@ -5,28 +5,32 @@
 </head>
 <body>
     <app-adminator-login></app-adminator-login>
-    <div class="btndiv">
-  <button class="insurancebtn" [routerLink] = "['/addnewinsurance1']">Add New Insurance</button>
-</div>
-<table>
+    <button class="insurancebtn" [routerLink] = "['/adminview/addnewinsurance']">Add New Insurance</button><br>
+    <h5 *ngIf="message !=null" style="color:green"> {{message}}, please refresh the page.</h5>
+
+<div class="size">
+<div class="table-responsive">
+<table class="table">
   <tr>
+    <th>Insurance Id</th>
     <th>Insurance Type</th>
     <th>Insurance Category</th>
-    <th>Insurance Id</th>
     <th>Coverage Period</th>
     <th>Amount</th>
     <th>Edit/Delete</th>
   </tr>
   <tr *ngFor="let insurance of insuranceData">
+      <td>{{insurance.insuranceId}}</td>
       <td>{{insurance.insuranceType}}</td>
       <td>{{insurance.insuranceCategory}}</td>
-      <td>{{insurance.insuranceId}}</td>
       <td>{{insurance.coveragePeriod}}</td>
       <td>{{insurance.amount}}</td>
-      <td><a href="#Edit" style="color:blue">Edit</a> &nbsp;
-      <a href="Delete" style="color:blue">Delete</a>
+      <td><button (click)="goToInsuranceDetails(insurance)" style="color:blue">Edit</button> &nbsp;
+      <button (click)="deleteInsurance(insurance)"  style="color:blue">Delete</button>
       </td>
     </tr>
 </table>
+</div>
+</div>
 </body>
 </html>
