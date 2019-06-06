@@ -1,11 +1,10 @@
 import { Component,Injectable, OnInit,EventEmitter,Output,ElementRef,HostListener} from '@angular/core';
-import { AuthService } from 'src/app/auth.service';
 import { Router } from '@angular/router';
 import { LoginserviceService } from 'src/app/loginform/loginservice.service';
 import { Subscription,fromEvent  } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { UserIdleService } from 'angular-user-idle';
-
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-customer-dashboard',
@@ -31,6 +30,15 @@ export class CustomerDashboardComponent implements OnInit {
   
  
   ngOnInit() {
+
+    $(document).ready(function(){
+      $('[data-toggle="offcanvas"]').click(function(){
+          $("#navigation").toggleClass("hidden-xs");
+      });
+   });
+   
+   
+   
    
 
     this.onStartWatching();
@@ -61,7 +69,7 @@ export class CustomerDashboardComponent implements OnInit {
   onStartWatching() {
     this.isWatching = true;
     this.timerCount = this.timeout;
-   // console.log("Session watching");
+    //console.log("Session watching");
     
     this.userIdle.stopWatching();    
     this.userIdle.setConfigValues({

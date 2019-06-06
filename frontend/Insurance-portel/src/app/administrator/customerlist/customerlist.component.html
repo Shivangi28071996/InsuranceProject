@@ -4,7 +4,7 @@
 </head>
 <body>
   <app-adminator-login></app-adminator-login>
- <h5 *ngIf="message !=null" style="color:green"> Account is :{{message}}, please refresh the page.</h5>
+ <!-- <h5 *ngIf="message !=null" style="color:green"> Account is :{{message}}, please refresh the page.</h5> -->
   <div class=size>
   <div class="table-responsive">
 <table class="table">
@@ -63,7 +63,8 @@
             {{contactDetails?.customerAddress.state}} ,
             {{contactDetails?.customerAddress.pinCode}} 
           </h4> </label><br>
-          <label> <h4>Alternate No. : {{contactDetails?.phone}} </h4> </label><br>
+          <label *ngIf="contactDetails?.phone==0"> <h4>Alternate No. :   &nbsp; &nbsp;- </h4> </label><br>
+          <label *ngIf="contactDetails?.phone!=0"> <h4>Alternate No. : {{contactDetails?.phone}} </h4> </label><br>
           <label> <h4>Mobile No. : {{contactDetails?.mobileNo}} </h4> </label><br>
           <label> <h4>EmailId : {{contactDetails?.emailId}} </h4> </label>
 

@@ -79,7 +79,7 @@
 
                                 <div class="form-group">
                                         <label>City:</label>  
-                                        <input type="text" class="form-control" placeholder="City *" pattern="[a-zA-Z]+" name="city" required ngModel #city="ngModel"/>
+                                        <input type="text" class="form-control" placeholder="City *" pattern="[a-zA-Z ]+" name="city" required ngModel #city="ngModel"/>
                                         <div style="color:red" 
                                         *ngIf="city.errors && (city.dirty || form.submitted)">
                                         <small *ngIf="city.errors.required"> The city is required </small>
@@ -89,7 +89,7 @@
                                     </div>
                                 <div class="form-group">
                                         <label>State:</label>  
-                                        <input type="text" class="form-control" placeholder="State *" pattern="[a-zA-Z]+" required name="state" ngModel #state="ngModel"/>
+                                        <input type="text" class="form-control" placeholder="State *" pattern="[a-zA-Z ]+" required name="state" ngModel #state="ngModel"/>
                                     
                                         <div style="color:red" 
                                         *ngIf="state.errors && (state.dirty || form.submitted)">
@@ -122,17 +122,17 @@
                               
                             <div class="form-group">
                                     <label>Annual Income:</label>  
-                                <input type="text" class="form-control" placeholder="Annual Income *" name="annualIncome" pattern="[0-9]+" ngModel required  #annualIncome="ngModel"/>
+                                <input type="text" class="form-control" placeholder="Annual Income *" name="annualIncome" pattern="(0\.((0[1-9]{1})|([1-9]{1}([0-9]{1})?)))|(([1-9]+[0-9]*)(\.([0-9]{1,2}))?)" ngModel required  #annualIncome="ngModel"/>
                                 <div style="color:red" 
                                 *ngIf="annualIncome.errors && (annualIncome.dirty || form.submitted)">
                                 <small *ngIf="annualIncome.errors.required"> The annualIncome is required </small>
-                                <small *ngIf="annualIncome.errors.pattern"> The annualIncome should be number </small>
+                                <small *ngIf="annualIncome.errors.pattern"> The annualIncome should be number and greater then 0 </small>
                                
                             </div>
                             </div>
                             <div class="form-group">
                                     <label>Mobile No:</label>  
-                                <input type="number" class="form-control" placeholder="MobileNo *" name="mobileNo" pattern="^[6789]\d{9}$" ngModel  required #mobileNo="ngModel"/>
+                                <input type="text" class="form-control" placeholder="MobileNo *" name="mobileNo" pattern="^[6789]\d{9}$" ngModel  required #mobileNo="ngModel"/>
                                 <div style="color:red" 
                                 *ngIf="mobileNo.errors && (mobileNo.dirty || form.submitted)">
                                 <small *ngIf="mobileNo.errors.required"> The mobileNo is required </small>
@@ -142,7 +142,7 @@
                             </div>
                             <div class="form-group">
                                     <label>Alternate Number:</label>  
-                                <input type="text" class="form-control" placeholder="Alternate Number" name="phone" ngModel pattern="^[6789]\d{9}$" #phoneNo="ngModel"/>
+                                <input type="text" class="form-control" placeholder="Alternate Number" name="phone" ngModel  pattern="^[6789]\d{9}$" #phoneNo="ngModel"/>
                                 <div style="color:red" 
                                 *ngIf="phoneNo.errors && (phoneNo.dirty || form.submitted)">
                                 

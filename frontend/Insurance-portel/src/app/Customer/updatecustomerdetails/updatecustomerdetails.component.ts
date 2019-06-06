@@ -46,7 +46,7 @@ export class UpdatecustomerdetailsComponent implements OnInit {
 
   onSubmit(updateform:NgForm){
     this.customerData=updateform.value;
-  // console.log("sdfdfdfdsf",this.customerData);
+   
 
    this.custService.updateCustomerDetails(this.customerData).subscribe(
     data => console.log("Success" ,data),

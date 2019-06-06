@@ -1,5 +1,4 @@
 import { Component, OnInit,EventEmitter,Output,ElementRef,HostListener} from '@angular/core';
-import { AuthService } from 'src/app/auth.service';
 import { Router } from '@angular/router';
 import { LoginserviceService } from 'src/app/loginform/loginservice.service';
 import { Subscription,fromEvent  } from 'rxjs';

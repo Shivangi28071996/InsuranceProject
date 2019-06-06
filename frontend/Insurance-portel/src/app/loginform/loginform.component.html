@@ -13,9 +13,10 @@
                     <div  id="home" role="tabpanel">
                         <h3 class="register-heading">Customer Login</h3>
                         <div class="row register-form">
-                                <label style="color:red"> {{message}}</label>
+                                
                             <div class="col-md-6">
                              <form #frm="ngForm" (ngSubmit)= "formSubmit(frm)" novalidate>
+                                    <label style="color:red"> {{message}}</label>
                                 <div class="form-group">
                                     <input type="email" class="form-control" name="username" placeholder="Email Id *"  ngModel />
                                         

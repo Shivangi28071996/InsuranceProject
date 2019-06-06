@@ -6,7 +6,7 @@ import {AdministratorService} from '../administrator/administrator.service'
 import {CustomerDetails} from '../administrator/customerlist/customerList';
 import {environment} from '../../environments/environment';
 import {CustomerInsurance} from '../Customer/add-new-insurance-by-customer/addNewInsurance';
-import{UpdatePassword} from '../Customer/customerdetails/updatePassword'
+import{UpdatePassword} from '../Customer/update-password/updatePassword'
 @Injectable({
   providedIn: 'root'
 })

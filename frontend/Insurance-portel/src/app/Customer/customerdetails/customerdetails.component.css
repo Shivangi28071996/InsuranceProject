@@ -64,6 +64,7 @@
 	
 } 
 #dashboard{
+ 
   height: 668px;
   overflow-y: auto;
 
@@ -81,13 +82,16 @@
 @media screen and (min-width: 600px) {
 	.main-content {
 		margin-left: 70px;
-	}
+  }
+  
+  
 }
 /* set element styles for desktop */
 @media screen and (min-width: 800px) {
 	.main-content {
 		margin-left: 200px;
-	}
+  }
+ 
 }
 img{
   width: 10%;
@@ -101,4 +105,10 @@ img{
    text-align:  left;
    margin-left: 80px;
   
+}
+.text-success {
+ color: black;
+}
+.panel-body{
+  color: black;
 }

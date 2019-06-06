@@ -1,7 +1,0 @@
-{
-    "/*": {
-        "target": "http://10.28.55.22:8082",
-        "secure": false,
-        "changeOrigin": true
-    }
-}

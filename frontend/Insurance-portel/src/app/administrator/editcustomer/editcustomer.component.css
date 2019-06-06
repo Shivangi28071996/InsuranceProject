@@ -51,3 +51,11 @@ input[type=text], input[type=password],input[type=number] {
   tr:nth-child(even) {
     background-color: #dddddd;
   }
+  .selectbox{
+    background-color: #ddd;
+    outline: none;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+  }

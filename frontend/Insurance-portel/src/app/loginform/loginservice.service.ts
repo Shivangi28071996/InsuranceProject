@@ -10,7 +10,6 @@ import {environment} from '../../environments/environment';
   providedIn: 'root'
 })
 export class LoginserviceService {
-  //url = "http://13.233.110.112:8090";
  url = environment.baseUrl;
  
   constructor(private http: HttpClient) { }
@@ -20,6 +19,22 @@ export class LoginserviceService {
       return this.http.get(getCustomerListUrl);
     
   }
+  getToken(loginCstomer:LoginCstomer){
+    //console.log("Login Service ",loginCstomer);
+    let getCustomerListUrl1 = `${this.url}/token`;
+  //   let httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
+  // let options=  {
+  //      headers:httpHeaders
+  // };
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Access-Control-Allow-Origin':'http://localhost:4200',
+      'Content-Type':  'application/json',
+   })
+  };
+    return this.http.post(getCustomerListUrl1,loginCstomer,httpOptions);
+  }
+  
   loginDetails(loginCstomer:LoginCstomer){
     //console.log("Login Service ",loginCstomer);
     let getCustomerListUrl1 = `${this.url}/loginCustomer`;
@@ -29,6 +44,26 @@ export class LoginserviceService {
   };
     return this.http.post(getCustomerListUrl1,loginCstomer,options);
   }
+
+// loginDetails(){
+   
+// let getCustomerListUrl1 = `${this.url}/customer/loginCustomer`;
+//  let userId = {"username ":localStorage.getItem("userId"),"token":localStorage.getItem("currentUser")};
+//  console.log("username "+localStorage.getItem("userId"),"Token"+localStorage.getItem("currentUser"));
+
+//  const httpOptions = {
+//   headers: new HttpHeaders({
+//     'Access-Control-Allow-Origin':'http://localhost:4200',
+//   'Content-Type':  'application/json', 
+//   'Authorization': "Bearer " + localStorage.getItem("currentUser")
+//  })
+// };
+
+// console.log(headers_object);
+
+// console.log("httpOptions========"+httpOptions)
+// return this.http.post(getCustomerListUrl1,userId,httpOptions);
+// }
 
   registerCustomer( customerDetails:CustomerDetails):Observable<String>{
     

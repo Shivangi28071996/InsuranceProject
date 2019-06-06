@@ -43,7 +43,7 @@ addNewIsurance(addNewInsurance:NgForm){
   this.service.addNewInsurance(this.insuranceDetails,this.tokenId).subscribe( 
     data => console.log('success', data),
     error => {error.error.text;
-     this.router.navigate(['/customerDashboard/customerdetails']);
+     this.router.navigate(['/customerDashboard/insurancelist']);
 
     });
 }

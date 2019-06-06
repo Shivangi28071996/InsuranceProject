@@ -4,6 +4,7 @@
 body {
 	margin: 0;
 	padding: 0;
+	
 	font-family: 'Source Sans Pro', sans-serif;
 	background-color: #d5dae5;
 	-webkit-font-smoothing: antialiased;
@@ -102,6 +103,9 @@ body {
 	top: 0;
 	left: 0;
 	background-color: #fff;
+}
+li:hover{
+	background-color :#a9bad1;
 }
 .side-nav ul li a {
 	color: #fff;
