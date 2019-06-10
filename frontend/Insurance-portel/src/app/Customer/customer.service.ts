@@ -17,14 +17,14 @@ export class CustomerService {
 
 
 getCutomerDetailById() {
-    //  console.log("user name" + username);
+
      let getCustomerByIdUrl =  this.url+"/getCustomerById";
     return this.http.get(getCustomerByIdUrl);
 }
 
 deactiveAccount():Observable<Number>{
   let deactiveAccount = this.url+"/deActivateCustomerAccount/";
-  // console.log(deactiveAccount)
+
   return this.http.delete<Number>(deactiveAccount);
 }
 
@@ -35,18 +35,12 @@ updateCustomerDetails(customerDetails:CustomerDetails):Observable<Number>{
 
 addNewInsurance(customerInsurance:CustomerInsurance):Observable<CustomerInsurance>{
   let addNewInsurance = this.url+"/addInsurance/";
-  // let httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
-  // let options=  {
-  //      headers:httpHeaders
-  // };
+  
    return this.http.put<CustomerInsurance>(addNewInsurance,customerInsurance);
 }
 updatePassword(updateCustomerPassword:UpdatePassword){
   let updateCustomerPasswordUrl = `${this.url}/updatePassword`
-  // let httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
-  // let options=  {
-  //      headers:httpHeaders
-  // };
+  
    return this.http.put<CustomerInsurance>(updateCustomerPasswordUrl,updateCustomerPassword);
 
 }

@@ -5,9 +5,6 @@ import{LoginCstomer} from './loginCustomer';
 import {LoginserviceService} from './loginservice.service';
 
 
-
-
-
 @Component({
   selector: 'app-loginform',
   templateUrl: './loginform.component.html',
@@ -41,19 +38,13 @@ export class LoginformComponent implements OnInit {
               data => console.log('success', data),
               error => {this.customerId= error.error.text;
                       this.errorStatus= error.status;   
-                     this.checkCustomer();    
+                      localStorage.setItem('currentUser',this.customerId);
+                      this.checkCustomer();    
               
                  });
                  
    }
   
-//   else{
-//     this.service.loginDetails(this.loginCstomer).subscribe(
-//        data => console.log('success', data),
-//        error => {this.customerId= error.error.text;
-//               this.checkCustomer();    
-//           });
-// }
    }
 
    checkCustomer(){
@@ -81,17 +72,12 @@ export class LoginformComponent implements OnInit {
      else
      {
       
+
+       localStorage.removeItem("currentUser")
+       localStorage.setItem('currentUser',this.customerId);
+       this.router.navigate(['/customerDashboard'])
       
-      localStorage.setItem('currentUser',this.customerId);
-      // console.log(localStorage.getItem("currentUser"))
-      //   this.service.loginDetails().subscribe(
-      //     data => console.log('success', data),
-      //     error => {console.log(error.error.text);
-            
-      //        });
-       console.log("currentUser from login =========="+ localStorage.getItem("currentUser"))
-      // console.log("customer Id  "+ this.customerId)
-        this.router.navigate(['/customerDashboard'])
+        
      }  
 
    }  

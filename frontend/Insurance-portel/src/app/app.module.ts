@@ -6,14 +6,14 @@ import { FormsModule } from '@angular/forms'
 import{HttpModule} from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule,HTTP_INTERCEPTORS} from '@angular/common/http'
-import {TokenInterceptorService} from './token-interceptor.service';
+import {TokenInterceptorService} from './_helpers/token-interceptor.service';
 import { MatRippleModule,MatButtonModule,MatMenuModule, MatToolbarModule,
         MatIconModule,MatCardModule 
 } from '@angular/material';
 import {RegistrationComponent,LoginformComponent,ServererrorComponent,
   PathnotfoundComponent,HomepageComponent,DashboardComponent,FooterComponent,HeaderComponent,
   LoginserviceService
-} from "./index";
+} from ".";
 
 import {AddnewinsuranceComponent,CustomerlistComponent,InsurancelistComponent,
   EditcustomerComponent,EditInsuranceComponent,AdminatorLoginComponent,
