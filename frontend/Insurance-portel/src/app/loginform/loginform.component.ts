@@ -36,24 +36,24 @@ export class LoginformComponent implements OnInit {
       this.router.navigate(['/adminview'])
    }
 
-  //  else{
-  //          this.service.getToken(this.loginCstomer).subscribe(
-  //             data => console.log('success', data),
-  //             error => {this.customerId= error.error.text;
-  //                     this.errorStatus= error.status;   
-  //                    this.checkCustomer();    
+   else{
+           this.service.getToken(this.loginCstomer).subscribe(
+              data => console.log('success', data),
+              error => {this.customerId= error.error.text;
+                      this.errorStatus= error.status;   
+                     this.checkCustomer();    
               
-  //                });
+                 });
                  
-  //  }
+   }
   
-  else{
-    this.service.loginDetails(this.loginCstomer).subscribe(
-       data => console.log('success', data),
-       error => {this.customerId= error.error.text;
-              this.checkCustomer();    
-          });
-}
+//   else{
+//     this.service.loginDetails(this.loginCstomer).subscribe(
+//        data => console.log('success', data),
+//        error => {this.customerId= error.error.text;
+//               this.checkCustomer();    
+//           });
+// }
    }
 
    checkCustomer(){
@@ -68,6 +68,10 @@ export class LoginformComponent implements OnInit {
       console.log("Deactivate ======",this.customerId)
       this.message = "Your Account is Deactivated!"
     }
+    else if(this.customerId ==="Not registered"){
+      
+      this.message = "Your email is Not registered!"
+    }
     
     else if(this.errorStatus == 0){
         
@@ -79,7 +83,14 @@ export class LoginformComponent implements OnInit {
       
       
       localStorage.setItem('currentUser',this.customerId);
-        //this.service.loginDetails().subscribe();
+      // console.log(localStorage.getItem("currentUser"))
+      //   this.service.loginDetails().subscribe(
+      //     data => console.log('success', data),
+      //     error => {console.log(error.error.text);
+            
+      //        });
+       console.log("currentUser from login =========="+ localStorage.getItem("currentUser"))
+      // console.log("customer Id  "+ this.customerId)
         this.router.navigate(['/customerDashboard'])
      }  
 

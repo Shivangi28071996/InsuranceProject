@@ -14,7 +14,7 @@
     <div style="color:red" 
     *ngIf="firstname.errors && (firstname.dirty || updateform.submitted)">
     <small *ngIf="firstname.errors.required"> The name is required </small>
-    <small *ngIf="firstname.errors.pattern"> Address does not contain special characters and number</small>
+    <small *ngIf="firstname.errors.pattern"> Name does not contain special characters and number</small>
    </div>
     <label for="Occupation"><b>Occupation</b></label>
     <input type="text" class="form-control" placeholder="Occupation" name="occupation" [(ngModel)]="this.customerData.occupation" required pattern="[a-zA-Z ]+" ngModel  #occupation="ngModel">

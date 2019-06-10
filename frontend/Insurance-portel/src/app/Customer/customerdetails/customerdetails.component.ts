@@ -42,7 +42,7 @@ export class CustomerdetailsComponent implements OnInit {
       // });
 
 
-      this.service.getCutomerDetailById(this.tokenId ).subscribe((customerDetails:any)=>{ this.customerDetail = customerDetails;
+      this.service.getCutomerDetailById().subscribe((customerDetails:any)=>{ this.customerDetail = customerDetails;
                                                                                                   
         this.contactDetails=true;
         this.personalDetails=true;
@@ -56,7 +56,7 @@ export class CustomerdetailsComponent implements OnInit {
    
   }
   checkInsuranceDetails(){
-    console.log( "customer Deteakdfksdfk  "+this.customerDetail)
+    // console.log( "customer Deteakdfksdfk  "+this.customerDetail)
     if(this.customerDetail.customerInsurance.length>0){
       this.insuranceList=true;
     }
@@ -69,8 +69,6 @@ export class CustomerdetailsComponent implements OnInit {
   updateCustomerDetails(customerId:String){
     this.router.navigate(['customerDashboard/updatecustomerdetails'])
   }
-  
-  
 
   logout(){
     this.loginService.logout();

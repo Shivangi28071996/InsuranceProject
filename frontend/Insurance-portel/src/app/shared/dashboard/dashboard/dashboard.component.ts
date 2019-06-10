@@ -40,11 +40,11 @@ tokenId:String;
     
   }
   deactivateAccount(){
-    this.tokenId= localStorage.getItem("currentUser");
+    // this.tokenId= localStorage.getItem("currentUser");
    
     if(confirm("Are you sure !")){
       
-      this.service.deactiveAccount(this.tokenId).subscribe(
+      this.service.deactiveAccount().subscribe(
        data => console.log('success', data),
        error => {
         

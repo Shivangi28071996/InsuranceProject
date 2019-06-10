@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpResponse,HttpHeaders } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import { map } from 'rxjs/operators';
 import {AdministratorService} from '../administrator/administrator.service'
 import {CustomerDetails} from '../administrator/customerlist/customerList';
 import {environment} from '../../environments/environment';
@@ -11,49 +10,44 @@ import{UpdatePassword} from '../Customer/update-password/updatePassword'
   providedIn: 'root'
 })
 export class CustomerService {
-  //url = "http://13.233.110.112:8090";
+
   url = environment.baseUrl;
  
   constructor(private http: HttpClient, private service:AdministratorService) { }
 
-  getCutomerDetailById(username: String) {
-  
-   return  this.service.getCutomerDetailById(username);
-    
+
+getCutomerDetailById() {
+    //  console.log("user name" + username);
+     let getCustomerByIdUrl =  this.url+"/getCustomerById";
+    return this.http.get(getCustomerByIdUrl);
 }
 
-deactiveAccount(customerId:String):Observable<Number>{
-  let deactiveAccount = this.url+"/deActivateCustomerAccount/"+customerId;
-  console.log(deactiveAccount)
-  let httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
+deactiveAccount():Observable<Number>{
+  let deactiveAccount = this.url+"/deActivateCustomerAccount/";
+  // console.log(deactiveAccount)
   return this.http.delete<Number>(deactiveAccount);
 }
 
 updateCustomerDetails(customerDetails:CustomerDetails):Observable<Number>{
-
   let updateCustomer = `${this.url}/updateCustomerDetailByCustomer`;
-  let httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
-   let options=  {
-        headers:httpHeaders
-   };
-   return this.http.put<Number>(updateCustomer+ "/"+customerDetails.customerId,JSON.stringify(customerDetails),options);
+   return this.http.put<Number>(updateCustomer,customerDetails);
 }
 
-addNewInsurance(customerInsurance:CustomerInsurance,customerId:String):Observable<CustomerInsurance>{
-  let addNewInsurance = this.url+"/addInsurance/"+customerId ;
-  let httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
-  let options=  {
-       headers:httpHeaders
-  };
-   return this.http.put<CustomerInsurance>(addNewInsurance,customerInsurance,options);
+addNewInsurance(customerInsurance:CustomerInsurance):Observable<CustomerInsurance>{
+  let addNewInsurance = this.url+"/addInsurance/";
+  // let httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
+  // let options=  {
+  //      headers:httpHeaders
+  // };
+   return this.http.put<CustomerInsurance>(addNewInsurance,customerInsurance);
 }
-updatePassword(updateCustomerPassword:UpdatePassword,customerId:String){
-  let updateCustomerPasswordUrl = this.url+"/updatePassword/"+customerId ;
-  let httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
-  let options=  {
-       headers:httpHeaders
-  };
-   return this.http.put<CustomerInsurance>(updateCustomerPasswordUrl,updateCustomerPassword,options);
+updatePassword(updateCustomerPassword:UpdatePassword){
+  let updateCustomerPasswordUrl = `${this.url}/updatePassword`
+  // let httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
+  // let options=  {
+  //      headers:httpHeaders
+  // };
+   return this.http.put<CustomerInsurance>(updateCustomerPasswordUrl,updateCustomerPassword);
 
 }
 

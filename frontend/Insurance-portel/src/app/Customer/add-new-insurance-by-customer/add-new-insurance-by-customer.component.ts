@@ -15,7 +15,7 @@ export class AddNewInsuranceByCustomerComponent implements OnInit {
  
   
   insuranceCategory:InsuranceCategory[];
-  tokenId:String;
+  // tokenId:String;
   insuranceId:String;
   insuranceDetailsCheck:boolean = false;
   insuranceDetails:CustomerInsurance;
@@ -25,7 +25,7 @@ export class AddNewInsuranceByCustomerComponent implements OnInit {
    }
    ngOnInit() {
     this.route.params.subscribe(params =>{
-      this.tokenId = localStorage.getItem('currentUser');
+      // this.tokenId = localStorage.getItem('currentUser');
       this.adminService.getInsuranceDetailsById(params['insuranceId']).subscribe((insuranceDetails:any)=> {
        
         this.insuranceDetails = insuranceDetails;
@@ -40,11 +40,10 @@ addNewIsurance(addNewInsurance:NgForm){
   //console.log(addNewInsurance.value);
   this.insuranceDetails = addNewInsurance.value;
 //console.log(this.insuranceDetails);
-  this.service.addNewInsurance(this.insuranceDetails,this.tokenId).subscribe( 
+  this.service.addNewInsurance(this.insuranceDetails).subscribe( 
     data => console.log('success', data),
     error => {error.error.text;
      this.router.navigate(['/customerDashboard/insurancelist']);
-
     });
 }
 }

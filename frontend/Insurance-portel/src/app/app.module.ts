@@ -5,7 +5,8 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms'
 import{HttpModule} from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule,HTTP_INTERCEPTORS} from '@angular/common/http'
+import {TokenInterceptorService} from './token-interceptor.service';
 import { MatRippleModule,MatButtonModule,MatMenuModule, MatToolbarModule,
         MatIconModule,MatCardModule 
 } from '@angular/material';
@@ -65,7 +66,13 @@ import {CustomerdetailsComponent,UpdatecustomerdetailsComponent,
     AppRoutingModule,
     HttpModule,HttpClientModule,MatRippleModule,MatButtonModule,MatMenuModule, MatToolbarModule,MatIconModule,MatCardModule,BrowserAnimationsModule              
   ],
-  providers: [AdministratorService,DataService,LoginserviceService],
+  providers: [AdministratorService,DataService,LoginserviceService,
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass:TokenInterceptorService,
+    multi:true
+  }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

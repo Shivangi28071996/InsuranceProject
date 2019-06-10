@@ -11,7 +11,7 @@ import {environment} from '../../environments/environment';
 })
 export class LoginserviceService {
  url = environment.baseUrl;
- 
+  tokenId:String
   constructor(private http: HttpClient) { }
  
    getAllCustomer(){
@@ -26,55 +26,65 @@ export class LoginserviceService {
   // let options=  {
   //      headers:httpHeaders
   // };
-  const httpOptions = {
-    headers: new HttpHeaders({
-      'Access-Control-Allow-Origin':'http://localhost:4200',
-      'Content-Type':  'application/json',
-   })
-  };
-    return this.http.post(getCustomerListUrl1,loginCstomer,httpOptions);
-  }
-  
-  loginDetails(loginCstomer:LoginCstomer){
-    //console.log("Login Service ",loginCstomer);
-    let getCustomerListUrl1 = `${this.url}/loginCustomer`;
-    let httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
-  let options=  {
-       headers:httpHeaders
-  };
-    return this.http.post(getCustomerListUrl1,loginCstomer,options);
+  // const httpOptions = {
+  //   headers: new HttpHeaders({
+  //     'Content-Type':  'application/json',
+  //  })
+  // };
+    return this.http.post(getCustomerListUrl1,loginCstomer);
   }
 
-// loginDetails(){
+  // loginDetails(loginCstomer:LoginCstomer){
+  //   //console.log("Login Service ",loginCstomer);
+  //   let getCustomerListUrl1 = `${this.url}/loginCustomer`;
+  //   let httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
+  // let options=  {
+  //      headers:httpHeaders
+  // };
+  //   return this.http.post(getCustomerListUrl1,loginCstomer,options);
+  // }
+
+loginDetails(){
    
-// let getCustomerListUrl1 = `${this.url}/customer/loginCustomer`;
-//  let userId = {"username ":localStorage.getItem("userId"),"token":localStorage.getItem("currentUser")};
-//  console.log("username "+localStorage.getItem("userId"),"Token"+localStorage.getItem("currentUser"));
+let getCustomerListUrl1 = `${this.url}/customer/loginCustomer`;
+ let userId = {"username ":localStorage.getItem("userId"),"token":localStorage.getItem("currentUser")};
+ console.log("username "+localStorage.getItem("userId"),"Token "+localStorage.getItem("currentUser"));
 
-//  const httpOptions = {
-//   headers: new HttpHeaders({
-//     'Access-Control-Allow-Origin':'http://localhost:4200',
-//   'Content-Type':  'application/json', 
-//   'Authorization': "Bearer " + localStorage.getItem("currentUser")
-//  })
-// };
+ const httpOptions = {
+  headers: new HttpHeaders({
+   
+  'Content-Type':  'application/json', 
+  'Access-Control-Allow-Origin': 'https://localhost:4200',
+  'Access-Control-Allow-Methods': 'GET',
+  'Authorization': "Bearer " + localStorage.getItem("currentUser"),
+  'Accept': '*/*',
+ })
+};
 
-// console.log(headers_object);
+
+
 
 // console.log("httpOptions========"+httpOptions)
-// return this.http.post(getCustomerListUrl1,userId,httpOptions);
-// }
+
+
+return this.http.get(getCustomerListUrl1,httpOptions);
+}
 
   registerCustomer( customerDetails:CustomerDetails):Observable<String>{
     
     let getCustomerListUrl1 = `${this.url}/createCustomer`;
-    let httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
-    let options=  {
-       headers:httpHeaders
-  };
-     return this.http.post<String>(getCustomerListUrl1,customerDetails,options);
+  //   let httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
+  //   let options=  {
+  //      headers:httpHeaders
+  // };
+     return this.http.post<String>(getCustomerListUrl1,customerDetails);
   }
 
+getLocalToken(){
+  console.log("currentUser from service=========="+ localStorage.getItem("currentUser"))
+  this.tokenId =  localStorage.getItem("currentUser");
+  return this.tokenId;
+}
 
 logout(){
     localStorage.removeItem('currentUser');

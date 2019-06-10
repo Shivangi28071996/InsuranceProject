@@ -23,9 +23,9 @@ export class UpdatePasswordComponent implements OnInit {
   constructor(private service :CustomerService,private loginService:LoginserviceService,private router:Router) { }
 
   ngOnInit() {
-    this.tokenId = localStorage.getItem('currentUser');
+    // this.tokenId = localStorage.getItem('currentUser');
     
-      this.service.getCutomerDetailById(this.tokenId ).subscribe((customerDetails:any)=>{ this.customerDetail = customerDetails;
+      this.service.getCutomerDetailById().subscribe((customerDetails:any)=>{ this.customerDetail = customerDetails;
        
       
       });
@@ -37,7 +37,7 @@ export class UpdatePasswordComponent implements OnInit {
      
       if(this.customerDetail.password ===this.updateCustomerPassword.oldPassword){
         if(this.updateCustomerPassword.newPassword ===this.updateCustomerPassword.confirmPassword){
-           this.service.updatePassword(this.updateCustomerPassword,this.customerDetail.customerId).subscribe(
+           this.service.updatePassword(this.updateCustomerPassword).subscribe(
       data => console.log('success', data),
       error => {this.checkPassword= error.error.text;
               this.checkCustomerPassword();

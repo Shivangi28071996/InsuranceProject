@@ -24,8 +24,8 @@ export class UpdatecustomerdetailsComponent implements OnInit {
 
   ngOnInit() {
      
-     this.tokenId = localStorage.getItem('currentUser');
-      this.service.getCutomerDetailById(this.tokenId).subscribe((customerDetails:any)=>{ this.customerData = customerDetails;
+    //  this.tokenId = localStorage.getItem('currentUser');
+      this.custService.getCutomerDetailById().subscribe((customerDetails:any)=>{ this.customerData = customerDetails;
                                                                                                   
                                                                                                         this.personalDetails=true;
 });
