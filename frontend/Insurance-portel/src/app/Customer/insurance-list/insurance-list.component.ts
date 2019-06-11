@@ -14,7 +14,6 @@ export class InsuranceListComponent implements OnInit {
   constructor(private service :CustomerService) { }
 
   ngOnInit() {
-    // this.tokenId = localStorage.getItem('currentUser');
     this.service.getCutomerDetailById().subscribe((customerDetails:any)=>{ this.customerDetail = customerDetails;
                                                                                                   
       this.checkInsuranceDetails();

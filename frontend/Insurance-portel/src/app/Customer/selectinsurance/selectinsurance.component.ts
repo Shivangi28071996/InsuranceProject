@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {AdministratorService} from '../../administrator/administrator.service';
-import { Router,ActivatedRoute, Params } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 import { InsuranceDetails } from '../../administrator/insurancelist/insuranceList';
+import { CustomerService } from '../customer.service';
 
 @Component({
   selector: 'app-selectinsurance',
@@ -15,11 +15,11 @@ export class SelectinsuranceComponent implements OnInit {
   lifeInsurance:InsuranceDetails[]=[];
   customerId:String;
 
-  constructor(private service:AdministratorService, private router:Router,private route:ActivatedRoute ) { }
+  constructor( private router:Router,private route:ActivatedRoute,private custService:CustomerService ) { }
 
   ngOnInit() {
 
-    this.service.getInsuranceList().subscribe((data:InsuranceDetails[]) =>{this.insuranceData = data;this.getInsuranceDetails();
+    this.custService.getInsuranceList().subscribe((data:InsuranceDetails[]) =>{this.insuranceData = data;this.getInsuranceDetails();
                                                                                                         
     });
    

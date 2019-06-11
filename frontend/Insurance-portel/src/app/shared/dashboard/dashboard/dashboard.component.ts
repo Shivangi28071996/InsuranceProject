@@ -1,7 +1,7 @@
-import { Component, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import * as $ from "jquery";
 import { LoginserviceService } from 'src/app/loginform/loginservice.service';
-import { Router , ActivatedRoute, Params} from '@angular/router';
+import { Router} from '@angular/router';
 import { CustomerService } from 'src/app/Customer/customer.service';
 
 
@@ -40,7 +40,7 @@ tokenId:String;
     
   }
   deactivateAccount(){
-    // this.tokenId= localStorage.getItem("currentUser");
+
    
     if(confirm("Are you sure !")){
       

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router , ActivatedRoute, Params} from '@angular/router';
+import { Router , ActivatedRoute} from '@angular/router';
 import {AdministratorService} from '../../administrator/administrator.service';
 import { NgForm } from '@angular/forms';
 import{CustomerDetails} from '../../administrator/customerlist/customerList';
@@ -24,7 +24,6 @@ export class UpdatecustomerdetailsComponent implements OnInit {
 
   ngOnInit() {
      
-    //  this.tokenId = localStorage.getItem('currentUser');
       this.custService.getCutomerDetailById().subscribe((customerDetails:any)=>{ this.customerData = customerDetails;
                                                                                                   
                                                                                                         this.personalDetails=true;

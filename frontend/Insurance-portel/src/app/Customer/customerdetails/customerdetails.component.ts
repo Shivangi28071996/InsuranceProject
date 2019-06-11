@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router , ActivatedRoute, Params} from '@angular/router';
 import {CustomerService} from '../customer.service';
 import {CustomerDetails} from '../../administrator/customerlist/customerList';
@@ -32,15 +32,6 @@ export class CustomerdetailsComponent implements OnInit {
 
   ngOnInit() {
     this.tokenId = localStorage.getItem('currentUser');
-    
-      // this.loginService.loginDetails().subscribe((customerDetails:any)=>{ this.customerDetail = customerDetails;
-                                                                                                  
-      //                                                                                               this.contactDetails=true;
-      //                                                                                               this.personalDetails=true;
-      //                                                                                               this.checkInsuranceDetails();
-       
-      // });
-
 
       this.service.getCutomerDetailById().subscribe((customerDetails:any)=>{ this.customerDetail = customerDetails;
                                                                                                   
@@ -56,7 +47,7 @@ export class CustomerdetailsComponent implements OnInit {
    
   }
   checkInsuranceDetails(){
-    // console.log( "customer Deteakdfksdfk  "+this.customerDetail)
+   
     if(this.customerDetail.customerInsurance.length>0){
       this.insuranceList=true;
     }

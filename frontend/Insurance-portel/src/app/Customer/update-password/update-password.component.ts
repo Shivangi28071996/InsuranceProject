@@ -23,8 +23,6 @@ export class UpdatePasswordComponent implements OnInit {
   constructor(private service :CustomerService,private loginService:LoginserviceService,private router:Router) { }
 
   ngOnInit() {
-    // this.tokenId = localStorage.getItem('currentUser');
-    
       this.service.getCutomerDetailById().subscribe((customerDetails:any)=>{ this.customerDetail = customerDetails;
        
       

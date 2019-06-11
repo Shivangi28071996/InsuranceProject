@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient,HttpResponse,HttpHeaders } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { Observable} from 'rxjs';
 import {AdministratorService} from '../administrator/administrator.service'
 import {CustomerDetails} from '../administrator/customerlist/customerList';
 import {environment} from '../../environments/environment';
@@ -20,6 +20,10 @@ getCutomerDetailById() {
 
      let getCustomerByIdUrl =  this.url+"/getCustomerById";
     return this.http.get(getCustomerByIdUrl);
+}
+getInsuranceList(){
+  let getInsuranceListUrl = `${this.url}/getInsuranceDetails`;
+  return this.http.get(getInsuranceListUrl);
 }
 
 deactiveAccount():Observable<Number>{
@@ -43,6 +47,19 @@ updatePassword(updateCustomerPassword:UpdatePassword){
   
    return this.http.put<CustomerInsurance>(updateCustomerPasswordUrl,updateCustomerPassword);
 
+}
+
+getInsuranceDetailsById(insuranceId:String){
+  console.log(insuranceId)
+  let getInsuranceById = `${this.url}/getInsuranceDetailsById`;
+  let httpHeaders = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'insuranceId': String(insuranceId)
+  });
+  let options=  {
+       headers:httpHeaders
+  };
+  return this.http.get(getInsuranceById,options);
 }
 
 }

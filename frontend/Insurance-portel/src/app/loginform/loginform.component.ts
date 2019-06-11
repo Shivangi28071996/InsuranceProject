@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router }  from '@angular/router'; 
+import { Router,ActivatedRoute }  from '@angular/router'; 
 import { NgForm } from '@angular/forms';
 import{LoginCstomer} from './loginCustomer';
 import {LoginserviceService} from './loginservice.service';
+import * as jwt_decode from 'jwt-decode';
+
 
 
 @Component({
@@ -18,37 +20,31 @@ export class LoginformComponent implements OnInit {
   message:String;
   ckeck:boolean;
   errorStatus:number;
-  constructor(private router: Router,private service:LoginserviceService) { }
+  returnUrl: string;
+  constructor(private router: Router,private service:LoginserviceService,private route: ActivatedRoute,) { }
 
   ngOnInit() {
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    
       
 }
     
    
    formSubmit(form:NgForm){
      this.loginCstomer=form.value
-     localStorage.setItem("userId",form.value.username)
-    if(form.value.username === "admin001" && form.value.password === "admin123"){
-      localStorage.setItem('currentUser',form.value.username);
-      this.router.navigate(['/adminview'])
-   }
-
-   else{
-           this.service.getToken(this.loginCstomer).subscribe(
+    this.service.getToken(this.loginCstomer).subscribe(
               data => console.log('success', data),
               error => {this.customerId= error.error.text;
                       this.errorStatus= error.status;   
-                      localStorage.setItem('currentUser',this.customerId);
+                      // localStorage.setItem('currentUser',this.customerId);
                       this.checkCustomer();    
-              
                  });
                  
-   }
   
+
    }
 
    checkCustomer(){
-     
      if(this.customerId ==="Not Found"){
        console.log("Not Found======",this.customerId)
 
@@ -68,16 +64,27 @@ export class LoginformComponent implements OnInit {
         
       this.router.navigate(['/error'])
     }
+    else if(this.errorStatus == 500){
+        
+      this.router.navigate(['/error500'])
+    }
 
-     else
+     else 
      {
-      
 
        localStorage.removeItem("currentUser")
        localStorage.setItem('currentUser',this.customerId);
-       this.router.navigate(['/customerDashboard'])
-      
-        
+       console.log(localStorage.getItem('currentUser'))
+       var decoded = jwt_decode(this.customerId); 
+        var pattern= "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+         if(decoded.sub.startsWith('admin') && decoded.sub!=pattern){
+
+           this.router.navigate(['/adminview'])
+         }
+         else{
+          this.router.navigate(['/customerDashboard']);
+         }
+       
      }  
 
    }  

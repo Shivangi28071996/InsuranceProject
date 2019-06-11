@@ -6,13 +6,12 @@ import { FormsModule } from '@angular/forms'
 import{HttpModule} from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule,HTTP_INTERCEPTORS} from '@angular/common/http'
-import {TokenInterceptorService} from './_helpers/token-interceptor.service';
 import { MatRippleModule,MatButtonModule,MatMenuModule, MatToolbarModule,
         MatIconModule,MatCardModule 
 } from '@angular/material';
 import {RegistrationComponent,LoginformComponent,ServererrorComponent,
   PathnotfoundComponent,HomepageComponent,DashboardComponent,FooterComponent,HeaderComponent,
-  LoginserviceService
+  LoginserviceService,TokenInterceptorService
 } from ".";
 
 import {AddnewinsuranceComponent,CustomerlistComponent,InsurancelistComponent,
@@ -25,7 +24,8 @@ import {CustomerdetailsComponent,UpdatecustomerdetailsComponent,
   CustomerDashboardComponent, InsuranceListComponent,UpdatePasswordComponent,
   VehicleinsurancelistComponent,HomeinsurancelistComponent,LifeinsurancelistComponent,
   InsuranceofferComponent
-} from './Customer'
+} from './Customer';
+import { Error500Component } from './shared/error/error500/error500.component'
 
 
 
@@ -57,6 +57,7 @@ import {CustomerdetailsComponent,UpdatecustomerdetailsComponent,
     UpdatePasswordComponent,
     ServererrorComponent,
     PathnotfoundComponent,
+    Error500Component,
    
     
   ],

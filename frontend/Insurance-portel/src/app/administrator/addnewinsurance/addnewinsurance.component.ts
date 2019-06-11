@@ -26,7 +26,7 @@ export class AddnewinsuranceComponent implements OnInit {
   ngOnInit() {
   }
   addNewIsurance(editForm:InsuranceDetails){
-    //console.log(editForm)
+
       this.service.addNewInsurance(editForm).subscribe( 
         data => console.log('success', data),
         error => {error.error.text;

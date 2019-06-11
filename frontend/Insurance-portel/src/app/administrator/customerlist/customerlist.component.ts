@@ -27,16 +27,10 @@ export class CustomerlistComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.userName = localStorage.getItem('currentUser');
-    // console.log(this.userName)
-    // if(this.userName=="admin001"){
-    //   this.getCustomerList();
-    // }else{
-    //   this.router.navigate(['Login'])
-    // }
+   
 
      this.getCustomerList();
-    // this. printdet();
+   
   }
   getCustomerList(){
     this.service.getCustomerList().subscribe((data:any) =>{ this.customerData = data;
@@ -68,14 +62,14 @@ export class CustomerlistComponent implements OnInit {
 
         })
   }
-  
 
   activateCustomerAccount(customerId:String){
     if(confirm("Are you sure !")) {
       this.service.activateCustomerAccount(customerId).subscribe(
         data => console.log('success', data),
         error => {
-          $(window.location.reload()); 
+            $(window.location.reload()); 
+         
           this.message= error.error.text; 
            });
     

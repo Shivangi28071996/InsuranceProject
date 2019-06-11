@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient,HttpResponse, HttpHeaders } from '@angular/common/http';
-import {RequestOptions,Headers} from '@angular/http';
-import { Observable, Subject } from 'rxjs';
-import { CustomerDetails, CustomerInsurance } from './customerlist/customerList'
-import { map } from 'rxjs/operators';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { CustomerDetails} from './customerlist/customerList'
 import{InsuranceDetails} from '../administrator/insurancelist/insuranceList'
 import {environment} from '../../environments/environment';
 @Injectable({
@@ -26,77 +24,94 @@ export class AdministratorService {
   }
   
   getCutomerDetailById(customerId: String) {
+    let getCustomerByIdUrl = `${this.url}/getCustomerDetailById`;
 
-    let getCustomerByIdUrl = `${this.url}/getCustomerDetailById/`+customerId;
-   
-    return this.http.get(getCustomerByIdUrl);
+    let httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+      'customerId': String(customerId)
+    });
+    let options=  {
+         headers:httpHeaders
+    };
+    
+    return this.http.get(getCustomerByIdUrl,options);
 
 }
 getInsuranceDetailsById(insuranceId:String):Observable<InsuranceDetails>{
-  let getInsuranceById = `${this.url}/getInsuranceDetailById/`;
-  return this.http.get<InsuranceDetails>(getInsuranceById + insuranceId);
+  let getInsuranceById = `${this.url}/getInsuranceDetailById`;
+  let httpHeaders = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'insuranceId': String(insuranceId)
+  });
+  let options=  {
+       headers:httpHeaders
+  };
+  return this.http.get<InsuranceDetails>(getInsuranceById,options);
 }
-updateCustomerDetail(customerData:CustomerDetails):Observable<Number>{
+updateCustomerDetail(customerData:CustomerDetails){
   let updateCustomer = `${this.url}/updateCustomerDetailByAdministrator`;
  
-   let httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
-   let options=  {
-        headers:httpHeaders
-   };
-   return this.http.put<Number>(updateCustomer+ "/"+customerData.customerId,JSON.stringify(customerData),options);
+  let httpHeaders = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'customerId': String(customerData.customerId)
+  });
+  let options=  {
+       headers:httpHeaders
+  };
+   return this.http.put(updateCustomer,JSON.stringify(customerData),options);
 }
 updateInsuranceDetail(insuranceData:InsuranceDetails):Observable<Number>{
 
 let updateInsurance = `${this.url}/updateInsuranceDetail`;
-let httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
+let httpHeaders = new HttpHeaders({
+  'Content-Type': 'application/json',
+  'insuranceId': String(insuranceData.insuranceId)
+});
 let options=  {
-  headers:httpHeaders
+     headers:httpHeaders
 };
-return this.http.put<Number>(updateInsurance+ "/" +insuranceData.insuranceId,JSON.stringify(insuranceData),options);
+return this.http.put<Number>(updateInsurance,JSON.stringify(insuranceData),options);
 
 }
 deleteCustomer(customerId:String):Observable<Number>{
-  let deleteCustomer = this.url+"/deleteCustomerAccount/"+customerId;
-  let httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
-  return this.http.delete<Number>(deleteCustomer);
+  let deleteCustomer = this.url+"/deleteCustomerAccount";
+  let httpHeaders = new HttpHeaders({
+    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+    'customerId': String(customerId)
+  });
+  let options=  {
+       headers:httpHeaders
+  };
+  return this.http.delete<Number>(deleteCustomer,options);
 }
-activateCustomerAccount(customerId:String):Observable<Number>{
-  let activateCustomerAccountUrl = this.url+"/activateCustomerAccount/"+customerId;
-  let httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
-let options=  {
-  headers:httpHeaders
-};
-  return this.http.put<Number>(activateCustomerAccountUrl,options);
+activateCustomerAccount(customerId){
+  sessionStorage.setItem("customerId",String(customerId))
+  let activateCustomerAccountUrl = this.url+"/activateCustomerAccount";
+  let httpHeaders = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'customerId': customerId
+  }); 
+  let options=  {
+       headers:httpHeaders
+  };
+  return this.http.put(activateCustomerAccountUrl,'',options);
 }
 addNewInsurance(insuranceData:InsuranceDetails):Observable<InsuranceDetails>{
   
   let addNewInsurance = this.url+"/createNewInsurance";
-  let httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
-  let options=  {
-       headers:httpHeaders
-  };
-   return this.http.post<InsuranceDetails>(addNewInsurance,insuranceData,options);
+   return this.http.post<InsuranceDetails>(addNewInsurance,insuranceData);
 
 }
 deleteInsurance(insuranceId:String):Observable<Number>{
-  let deleteInsurance = this.url+"/deleteInsuranceDetail/"+insuranceId;
-  let httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
-  return this.http.delete<Number>(deleteInsurance);
-}
+  let deleteInsurance = this.url+"/deleteInsuranceDetail";
 
-private extractData(res:Response) {
-  let body = res.json();
-  return body || [];
-}
-
-
-
-private handleError(error:any) {
-  // In a real world app, we might use a remote logging infrastructure
-  // We'd also dig deeper into the error to get a better message
-  let errMsg = (error.message) ? error.message :
-      error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-  console.error(errMsg); // log to console instead
-  return Observable.throw(errMsg);
+  let httpHeaders = new HttpHeaders({
+    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+    'insuranceId': String(insuranceId)
+  }); 
+  let options=  {
+       headers:httpHeaders
+  };
+  return this.http.delete<Number>(deleteInsurance,options);
 }
 }

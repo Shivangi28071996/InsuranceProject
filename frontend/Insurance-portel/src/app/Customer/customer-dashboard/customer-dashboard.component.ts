@@ -1,4 +1,4 @@
-import { Component,Injectable, OnInit,EventEmitter,Output,ElementRef,HostListener} from '@angular/core';
+import { Component, OnInit,EventEmitter,Output,ElementRef} from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginserviceService } from 'src/app/loginform/loginservice.service';
 import { Subscription,fromEvent  } from 'rxjs';
@@ -53,12 +53,12 @@ export class CustomerDashboardComponent implements OnInit {
   
     fromEvent(window, 'scroll')
     .subscribe(e => {
-    // console.log("reset");
+   
       this.onResetTimer();
     });
     fromEvent(document, 'mousemove')
     .subscribe(e => {
-    //  console.log("reset");
+   
       this.onResetTimer();
     });
   }
@@ -69,7 +69,7 @@ export class CustomerDashboardComponent implements OnInit {
   onStartWatching() {
     this.isWatching = true;
     this.timerCount = this.timeout;
-    //console.log("Session watching");
+  
     
     this.userIdle.stopWatching();    
     this.userIdle.setConfigValues({

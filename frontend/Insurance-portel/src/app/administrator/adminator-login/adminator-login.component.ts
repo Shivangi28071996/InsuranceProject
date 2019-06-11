@@ -27,13 +27,7 @@ export class AdminatorLoginComponent implements OnInit {
   private pingSubscription: Subscription;
 
   constructor(private loginservice:LoginserviceService,private router: Router,private userIdle: UserIdleService,private element: ElementRef) { }
-  // @HostListener('window:scroll', ['$event']) onScrollEvent($event){
-  //   this.onResetTimer();
-  // }
-  // @HostListener('document:click', ['$event'])
-  // clickout(event) {
-  //   this.onResetTimer();
-  // }
+  
   ngOnInit() {
     this.onStartWatching();
     this.idle = this.userIdle.getConfigValue().idle;
@@ -47,12 +41,12 @@ export class AdminatorLoginComponent implements OnInit {
 
     fromEvent(window, 'scroll')
     .subscribe(e => {
-    // console.log("reset");
+   
       this.onResetTimer();
     });
     fromEvent(document, 'mousemove')
     .subscribe(e => {
-     // console.log("reset");
+     
       this.onResetTimer();
     });
   }
@@ -64,7 +58,7 @@ export class AdminatorLoginComponent implements OnInit {
   onStartWatching() {
     this.isWatching = true;
     this.timerCount = this.timeout;
-    //console.log("Session watching");
+   
     
     this.userIdle.stopWatching();    
     this.userIdle.setConfigValues({
@@ -102,10 +96,10 @@ export class AdminatorLoginComponent implements OnInit {
     this.isTimer = false;
     this.timeIsUp = false;
     this.lastPing = null;
-   // console.log("Session stop watching");
+   
   }
   onStopTimer() {
-   // console.log("Session stop timer");
+  
     this.userIdle.stopTimer();
     this.isTimer = false;
   }

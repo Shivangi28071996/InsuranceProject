@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router , ActivatedRoute, Params} from '@angular/router';
 import {AdministratorService} from '../administrator.service'
 import{InsuranceDetails} from '../insurancelist/insuranceList'
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-edit-insurance',

@@ -13,6 +13,7 @@ import {CustomerdetailsComponent,UpdatecustomerdetailsComponent,
   CustomerDashboardComponent, InsuranceListComponent,UpdatePasswordComponent,
   InsuranceofferComponent
 } from './Customer'
+import { Error500Component } from './shared/error/error500/error500.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path:"insuranceoffer", component:InsuranceofferComponent},
   {path:"homePage",component:HomepageComponent},
   {path:"error",component:ServererrorComponent},
+  {path:"error500",component:Error500Component},
   {path:'Pathnotfound',component:PathnotfoundComponent},
   {path: 'adminview',canActivate:[AuthGuard],
  
