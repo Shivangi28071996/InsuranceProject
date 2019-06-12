@@ -36,7 +36,7 @@ export class LoginformComponent implements OnInit {
               data => console.log('success', data),
               error => {this.customerId= error.error.text;
                       this.errorStatus= error.status;   
-                      // localStorage.setItem('currentUser',this.customerId);
+                     
                       this.checkCustomer();    
                  });
                  
@@ -74,7 +74,7 @@ export class LoginformComponent implements OnInit {
 
        localStorage.removeItem("currentUser")
        localStorage.setItem('currentUser',this.customerId);
-       console.log(localStorage.getItem('currentUser'))
+      
        var decoded = jwt_decode(this.customerId); 
         var pattern= "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
          if(decoded.sub.startsWith('admin') && decoded.sub!=pattern){

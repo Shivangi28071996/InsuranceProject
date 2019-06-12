@@ -16,17 +16,20 @@ declare var $: any;
 })
 export class UpdatecustomerdetailsComponent implements OnInit {
   customerData:CustomerDetails;
+  customerDetails:CustomerDetails;
   customerAddress:String
   updateFormValue:any
   personalDetails:boolean=false;
   tokenId:String;
+  password:String;
   constructor(private router:Router,private route:ActivatedRoute,private service :AdministratorService,private custService:CustomerService) { }
 
   ngOnInit() {
      
       this.custService.getCutomerDetailById().subscribe((customerDetails:any)=>{ this.customerData = customerDetails;
-                                                                                                  
-                                                                                                        this.personalDetails=true;
+                                                                                  
+                                                                                  this.password=this.customerData.password;
+                                                                                      this.personalDetails=true;
 });
  
 
@@ -44,7 +47,9 @@ export class UpdatecustomerdetailsComponent implements OnInit {
   }
 
   onSubmit(updateform:NgForm){
-    this.customerData=updateform.value;
+    this.customerDetails=updateform.value;
+    
+    this.customerDetails.password=this.password
    
 
    this.custService.updateCustomerDetails(this.customerData).subscribe(
